@@ -33,6 +33,13 @@ namespace OneButtonGame.Acter
             this.gameDevice = gameDevice;
         }
 
+        protected GameObject(string name, Vector2 position, GameDevice gameDevice)
+        {
+            this.name = name;
+            this.position = position;
+            this.gameDevice = gameDevice;
+        }
+
         public void SetPosition(Vector2 position)
         {
             this.position = position;
