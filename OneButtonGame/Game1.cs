@@ -2,12 +2,15 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-
+using OneButtonGame.Def;
+using OneButtonGame.Device;
+using OneButtonGame.Scene;
 /// <summary>
 /// プロジェクト名がnamespaceとなります
 /// </summary>
 namespace OneButtonGame
 {
+
     /// <summary>
     /// ゲームの基盤となるメインのクラス
     /// 親クラスはXNA.FrameworkのGameクラス
@@ -18,6 +21,10 @@ namespace OneButtonGame
         private GraphicsDeviceManager graphicsDeviceManager;//グラフィックスデバイスを管理するオブジェクト
         private SpriteBatch spriteBatch;//画像をスクリーン上に描画するためのオブジェクト
 
+        private GameDevice gameDevice;
+        private Renderer renderer;
+        private SceneManager sceneManager;
+        private Sound sound;
         /// <summary>
         /// コンストラクタ
         /// （new で実体生成された際、一番最初に一回呼び出される）
@@ -28,6 +35,8 @@ namespace OneButtonGame
             graphicsDeviceManager = new GraphicsDeviceManager(this);
             //コンテンツデータ（リソースデータ）のルートフォルダは"Contentに設定
             Content.RootDirectory = "Content";
+            graphicsDeviceManager.PreferredBackBufferWidth = Screen.Width;
+            graphicsDeviceManager.PreferredBackBufferHeight = Screen.Height;
         }
 
         /// <summary>
@@ -36,8 +45,12 @@ namespace OneButtonGame
         protected override void Initialize()
         {
             // この下にロジックを記述
+            gameDevice = GameDevice.Instance(Content, GraphicsDevice);
 
-
+            sceneManager = new SceneManager();
+            sceneManager.Add(Scene.Scene.GamePlay, new GamePlay());
+            sceneManager.Add(Scene.Scene.Result, new Result());
+            sceneManager.Change(Scene.Scene.GamePlay);
 
             // この上にロジックを記述
             base.Initialize();// 親クラスの初期化処理呼び出し。絶対に消すな！！
@@ -85,7 +98,8 @@ namespace OneButtonGame
             }
 
             // この下に更新ロジックを記述
-
+            sceneManager.Update(gameTime);
+            gameDevice.Update(gameTime);
             // この上にロジックを記述
             base.Update(gameTime); // 親クラスの更新処理呼び出し。絶対に消すな！！
         }
@@ -101,7 +115,7 @@ namespace OneButtonGame
 
             // この下に描画ロジックを記述
 
-
+            sceneManager.Draw(renderer);
             //この上にロジックを記述
             base.Draw(gameTime); // 親クラスの更新処理呼び出し。絶対に消すな！！
         }
