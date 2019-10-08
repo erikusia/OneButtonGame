@@ -46,6 +46,8 @@
     <Compile Include="Def\Screen.cs" />
     <Compile Include="Device\BGMLoader.cs" />
     <Compile Include="Device\GameDevice.cs" />
+    <Compile Include="Device\GameObjectManager.cs" />
+    <Compile Include="Device\IGameObjectMediator.cs" />
     <Compile Include="Device\Loader.cs" />
     <Compile Include="Device\SELoader.cs" />
     <Compile Include="Device\Sound.cs" />
