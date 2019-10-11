@@ -40,12 +40,12 @@ namespace OneButtonGame.Acter
 
         public override void Hit(GameObject gameObject)
         {
-           //if(gameObject is Enemy)
-           // {
-           //     hp -= 1;
-           // }
+            if (gameObject is Enemy)
+            {
+                hp -= 1;
+            }
 
-           if(hp<0)
+            if (hp<0)
             {
                 isDeadFlag = true;
             }
@@ -58,7 +58,7 @@ namespace OneButtonGame.Acter
 
 
             position.X +=  100 + (float)Math.Sin(angle);
-            position.Y +=+ 200 + (float)Math.Sin(2*angle);
+            position.Y += 200 + (float)Math.Sin(2*angle);
 
         }
 

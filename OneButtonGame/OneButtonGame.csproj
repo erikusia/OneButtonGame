@@ -63,10 +63,13 @@
     <Compile Include="Device\Renderer.cs" />
     <Compile Include="Scene\GamePlay.cs" />
     <Compile Include="Scene\IScene.cs" />
+    <Compile Include="Scene\LoadSecen.cs" />
     <Compile Include="Scene\Result.cs" />
     <Compile Include="Scene\SceneManager.cs" />
     <Compile Include="Scene\Secen.cs" />
+    <Compile Include="Util\CountDownTimer.cs" />
     <Compile Include="Util\Range.cs" />
+    <Compile Include="Util\Timer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
