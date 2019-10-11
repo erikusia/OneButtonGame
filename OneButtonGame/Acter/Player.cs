@@ -57,8 +57,8 @@ namespace OneButtonGame.Acter
           
 
 
-            position.X += 100+ 100 + (float)Math.Sin(angle);
-            position.Y +=100+  200 + (float)Math.Sin(2*angle);
+            position.X +=  100 + (float)Math.Sin(angle);
+            position.Y +=+ 200 + (float)Math.Sin(2*angle);
 
         }
 
