@@ -69,6 +69,7 @@ namespace OneButtonGame.Device
         }
         private void removeDeadCharacters()
         {
+            Console.WriteLine("remove");
             gameObjectList.RemoveAll(c => c.IsDead());
         }
 

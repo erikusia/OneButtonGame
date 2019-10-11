@@ -41,8 +41,13 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Acter\Enemy.cs" />
     <Compile Include="Acter\GameObject.cs" />
+    <Compile Include="Acter\Option.cs" />
     <Compile Include="Acter\Player.cs" />
+    <Compile Include="Acter\PlayerBullet.cs" />
+    <Compile Include="Acter\PowerUpItem.cs" />
+    <Compile Include="Acter\ScoreItem.cs" />
     <Compile Include="Def\Screen.cs" />
     <Compile Include="Device\BGMLoader.cs" />
     <Compile Include="Device\GameDevice.cs" />
@@ -58,12 +63,10 @@
     <Compile Include="Device\Renderer.cs" />
     <Compile Include="Scene\GamePlay.cs" />
     <Compile Include="Scene\IScene.cs" />
-    <Compile Include="Scene\LoadSecen.cs" />
     <Compile Include="Scene\Result.cs" />
     <Compile Include="Scene\SceneManager.cs" />
     <Compile Include="Scene\Secen.cs" />
-    <Compile Include="Util\CountDownTimer.cs" />
-    <Compile Include="Util\Timer.cs" />
+    <Compile Include="Util\Range.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
