@@ -8,6 +8,7 @@ namespace OneButtonGame.Scene
 {
     enum Scene
     {
+        LoadScene,
         GamePlay,
         Result,
     }

@@ -48,9 +48,10 @@ namespace OneButtonGame
             gameDevice = GameDevice.Instance(Content, GraphicsDevice);
 
             sceneManager = new SceneManager();
+            sceneManager.Add(Scene.Scene.LoadScene, new LoadScene());
             sceneManager.Add(Scene.Scene.GamePlay, new GamePlay());
             sceneManager.Add(Scene.Scene.Result, new Result());
-            sceneManager.Change(Scene.Scene.GamePlay);
+            sceneManager.Change(Scene.Scene.LoadScene);
 
             // この上にロジックを記述
             base.Initialize();// 親クラスの初期化処理呼び出し。絶対に消すな！！
@@ -63,11 +64,12 @@ namespace OneButtonGame
         protected override void LoadContent()
         {
             // 画像を描画するために、スプライトバッチオブジェクトの実体生成
-            spriteBatch = new SpriteBatch(GraphicsDevice);
+          //  spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // この下にロジックを記述
 
-
+            renderer = gameDevice.GetRenderer();
+      
             // この上にロジックを記述
         }
 
