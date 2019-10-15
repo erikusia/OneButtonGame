@@ -19,7 +19,6 @@ namespace OneButtonGame.Acter
         float rad;
         float angle;
         Vector2 center;
-        PlayerBullet bullet;
 
         public Player( Vector2 position,  GameDevice gameDevice, IGameObjectMediator mediator,GameObjectManager gameObjectManager) 
             : base("block", position,32,32, gameDevice)
@@ -62,12 +61,16 @@ namespace OneButtonGame.Acter
 
             //position = new Vector2((float)Math.Sin(angle)*12+position.X,
             //    (float)Math.Sin(angle * 2) * 2+position.X);
-            angle += rotate;
-            
-            position = CalcPosition(center,angle, rad);
-            mediator.AddActor(new PlayerBullet(position,
-                gameDevice, mediator));
-           
+
+            if (Keyboard.GetState().IsKeyDown(Keys.Space))
+            {
+                angle += rotate;
+                position = CalcPosition(center, angle, rad);
+
+            }
+            gameObjectManager.Add(new PlayerBullet(position,
+     gameDevice, mediator, gameObjectManager));
+       gameObjectManager.Add(new Option(position, gameDevice, mediator,gameObjectManager));
         }
         public Vector2 CalcPosition( Vector2 position,float angle,float radius)
         { 

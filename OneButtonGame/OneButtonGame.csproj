@@ -44,6 +44,7 @@
     <Compile Include="Acter\Enemy.cs" />
     <Compile Include="Acter\GameObject.cs" />
     <Compile Include="Acter\Option.cs" />
+    <Compile Include="Acter\OptionItem.cs" />
     <Compile Include="Acter\Player.cs" />
     <Compile Include="Acter\PlayerBullet.cs" />
     <Compile Include="Acter\PowerUpItem.cs" />

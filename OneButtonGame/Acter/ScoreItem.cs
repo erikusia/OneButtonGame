@@ -17,11 +17,13 @@ namespace OneButtonGame.Acter
         Range range;
         private Option powerUpItem;
 
+        int score;
         public ScoreItem(Vector2 position, GameDevice gameDevice, IGameObjectMediator mediator)
             : base("ScoreItem", position, 64, 64, gameDevice)
         {
             this.position = position;
             this.mediator = mediator;
+            score = 0;
         }
 
         public ScoreItem(ScoreItem other)
@@ -36,12 +38,17 @@ namespace OneButtonGame.Acter
 
         public override void Hit(GameObject gameObject)
         {
-
+            if(gameObject is Player)
+            {
+                score += 2000;
+                isDeadFlag = true;
+                
+            }
         }
 
         public override void Update(GameTime gameTime)
         {
-
+            
         }
     }
 }

@@ -16,6 +16,7 @@ namespace OneButtonGame.Scene
         GameObjectManager gameObject;
         public bool isEnd;
         Player player;
+        Option option;
         public GamePlay()
             
         {
@@ -32,9 +33,12 @@ namespace OneButtonGame.Scene
         public void Initialize()
         {
             gameObject.Initialize();
-            player = new Player(new Vector2(200 , 200),
+            player = new Player(new Vector2(420 , 600),
     GameDevice.Instance(), gameObject, gameObject);
             gameObject.Add(player);
+            //option = new Option(player.GetPosition(),
+            //    GameDevice.Instance(), gameObject,gameObject);
+            gameObject.Add(option);
             isEnd = false;
         }
 

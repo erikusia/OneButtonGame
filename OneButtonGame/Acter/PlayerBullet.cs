@@ -16,17 +16,17 @@ namespace OneButtonGame.Acter
         private IGameObjectMediator mediator;
         Vector2 speed;
         Range range;
-
-        public PlayerBullet(Vector2 position,GameDevice gameDevice,IGameObjectMediator mediator)
+        public PlayerBullet(Vector2 position,GameDevice gameDevice,IGameObjectMediator mediator, GameObjectManager gameObjectManager)
             :base("Bullet",position,32,32,gameDevice)
         {
             this.position = position;
             this.mediator = mediator;
-            speed = new Vector2(1, 1);
-
+            this.gameObjectManager = gameObjectManager;
+            speed = new Vector2(0, -3);
+            
         }
         public  PlayerBullet(PlayerBullet other)
-            :this(other.position,other.gameDevice,other.mediator)
+            :this(other.position,other.gameDevice,other.mediator,other.gameObjectManager)
         {
 
         }
@@ -45,35 +45,21 @@ namespace OneButtonGame.Acter
 
         public override void Update(GameTime gameTime)
         {
-            position *= speed;
+                position += speed *30;
 
             range = new Range(0, Screen.Width);
-            if (range.IsOutOfRange((int)position.X))
-            {
-                if (position.X <= 0)
+
+                if (range.IsOutOfRange((int)position.X))
                 {
-                    if (position.X <= 0)
-                    {
-                        position = new Vector2(Screen.Width, position.Y);
-                    }
-                    else if (position.X >= Screen.Width)
-                    {
-                        position = new Vector2(0, position.Y);
-                    }
+                    isDeadFlag = true;
                 }
                 range = new Range(0, Screen.Height);
                 if (range.IsOutOfRange((int)position.Y))
                 {
-                    if (position.Y <= 0)
-                    {
-                        position = new Vector2(position.X, Screen.Height);
-                    }
-                    else if (position.Y >= Screen.Height)
-                    {
-                        position = new Vector2(position.X, 0);
-                    }
+                    isDeadFlag = true;
+
                 }
-            }
+            
 
         }
     }
