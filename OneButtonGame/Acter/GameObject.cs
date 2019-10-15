@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using OneButtonGame.Device;
 
+
 namespace OneButtonGame.Acter
 {
     enum Direction
@@ -141,6 +142,7 @@ namespace OneButtonGame.Acter
             }
 
         }
+
 
 
     }

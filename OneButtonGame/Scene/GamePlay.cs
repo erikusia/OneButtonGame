@@ -32,7 +32,7 @@ namespace OneButtonGame.Scene
         public void Initialize()
         {
             gameObject.Initialize();
-            player = new Player(new Vector2(420 - 16, 420 - 43),
+            player = new Player(new Vector2(200 , 200),
     GameDevice.Instance(), gameObject, gameObject);
             gameObject.Add(player);
             isEnd = false;
