@@ -42,6 +42,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Acter\Enemy.cs" />
+    <Compile Include="Acter\EnemyBullet.cs" />
     <Compile Include="Acter\GameObject.cs" />
     <Compile Include="Acter\Option.cs" />
     <Compile Include="Acter\Player.cs" />

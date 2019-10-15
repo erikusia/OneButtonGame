@@ -39,10 +39,8 @@ namespace OneButtonGame.Scene
             string[,] data = new string[,]
             {
                 //{ "back", path},//背景 
-                //{"target2",path },//的
                 {"block",path },
-                //{"arrow-12",path },
-                //{"bow",path },
+                {"Enemy",path },
                 //必要に応じて自分で追加
             };
 

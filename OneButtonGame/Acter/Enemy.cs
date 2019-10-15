@@ -14,6 +14,8 @@ namespace OneButtonGame.Acter
         private GameObjectManager gameObjectManager;
         private IGameObjectMediator mediator;
         private Random rnd = new Random();
+        int a;
+        int shotTime;
 
         public Enemy(Vector2 position, GameDevice gameDevice, IGameObjectMediator mediator)
             :base("Enemy",position,32,32,gameDevice)
@@ -62,6 +64,23 @@ namespace OneButtonGame.Acter
         public override void Update(GameTime gameTime)
         {
 
+            switch (a)
+            {
+                case 0:position.Y += 2;
+                    if (position.Y>=100)
+                    {
+                        a += 1;
+                    }
+                    break;
+                case 1:position.Y -= 2;
+                    break;
+            }
+            shotTime += 1;
+            if (shotTime >= 60)
+            {
+                
+                gameObjectManager.Add(new EnemyBullet(position, gameDevice, mediator));
+            }
         }
     }
 }

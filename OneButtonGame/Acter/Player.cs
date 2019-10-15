@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,13 +11,13 @@ namespace OneButtonGame.Acter
 {
     class Player : GameObject
     {
-       public static int hp;
+        public static int hp;
+        public static Vector2 playerPosition;
         private IGameObjectMediator mediator;
         private GameObjectManager gameObjectManager;
         float angle=0,
-         baseX, baseY;
+        baseX, baseY;
         int flame = 0;
-        
 
         public Player( Vector2 position,  GameDevice gameDevice, IGameObjectMediator mediator,GameObjectManager gameObjectManager) 
             : base("block", position,32,32, gameDevice)
@@ -54,11 +55,9 @@ namespace OneButtonGame.Acter
         public override void Update(GameTime gameTime)
         {
             //angle *= (float)Math.PI / 180;
-          
-
-
             position.X +=  100 + (float)Math.Sin(angle);
             position.Y += 200 + (float)Math.Sin(2*angle);
+            playerPosition = this.position;
 
         }
 
