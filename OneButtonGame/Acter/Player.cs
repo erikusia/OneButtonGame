@@ -16,6 +16,7 @@ namespace OneButtonGame.Acter
         float angle=0,
          baseX, baseY;
         int flame = 0;
+        public static Vector2 playerPosition;
         
 
         public Player( Vector2 position,  GameDevice gameDevice, IGameObjectMediator mediator,GameObjectManager gameObjectManager) 
@@ -40,11 +41,6 @@ namespace OneButtonGame.Acter
 
         public override void Hit(GameObject gameObject)
         {
-           //if(gameObject is Enemy)
-           // {
-           //     hp -= 1;
-           // }
-
            if(hp<0)
             {
                 isDeadFlag = true;
@@ -54,12 +50,9 @@ namespace OneButtonGame.Acter
         public override void Update(GameTime gameTime)
         {
             //angle *= (float)Math.PI / 180;
-          
-
-
             position.X +=  100 + (float)Math.Sin(angle);
             position.Y +=+ 200 + (float)Math.Sin(2*angle);
-
+            playerPosition = this.position;
         }
 
 

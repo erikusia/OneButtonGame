@@ -13,9 +13,12 @@ namespace OneButtonGame.Scene
     class GamePlay : IScene
     {
 
-        GameObjectManager gameObject;
+        public static GameObjectManager gameObject;
         public bool isEnd;
         Player player;
+        private Random rnd = new Random();
+        int spawnTime = 60;
+        Enemy enemy;
         public GamePlay()
             
         {
@@ -55,7 +58,17 @@ namespace OneButtonGame.Scene
 
         public void Update(GameTime gameTime)
         {
-            
+            spawnTime += 1;
+            if (spawnTime >= 60)
+            {
+                int x = rnd.Next(1, 740);
+                int y = rnd.Next(-50, 0);
+                enemy = new Enemy(new Vector2(x, y),
+                    GameDevice.Instance(), gameObject);
+                gameObject.Add(enemy);
+                spawnTime = 0;
+            }
+
             gameObject.Update(gameTime);
         }
     }
