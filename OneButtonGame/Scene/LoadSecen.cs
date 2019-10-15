@@ -41,6 +41,9 @@ namespace OneButtonGame.Scene
                 //{ "back", path},//背景 
                 {"block",path },
                 {"Enemy",path },
+                {"Bullet",path },
+                //{"arrow-12",path },
+                //{"bow",path },
                 //必要に応じて自分で追加
             };
 

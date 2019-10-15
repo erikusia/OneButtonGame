@@ -50,7 +50,7 @@ namespace OneButtonGame.Acter
                     break;
                 case 1:gameObjectManager.Add(new ScoreItem(position, gameDevice, mediator));
                     break;
-                case 2:gameObjectManager.Add(new Option(position, gameDevice, mediator));
+                case 2:gameObjectManager.Add(new OptionItem(position, gameDevice, mediator));
                     break;
                 case 3:gameObjectManager.Add(new PowerUpItem(position, gameDevice, mediator));
                     break;
