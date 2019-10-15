@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using OneButtonGame.Device;
 using Microsoft.Xna.Framework.Input;
+using OneButtonGame.Scene;
 
 namespace OneButtonGame.Acter
 {
@@ -17,16 +18,13 @@ namespace OneButtonGame.Acter
         public static Vector2 playerPosition;
         private IGameObjectMediator mediator;
         private GameObjectManager gameObjectManager;
-        float angle=0,
-        baseX, baseY;
-        int flame = 0;
         float rotate;
         float rad;
         float angle;
         Vector2 center;
 
         public Player( Vector2 position,  GameDevice gameDevice, IGameObjectMediator mediator,GameObjectManager gameObjectManager) 
-            : base("block", position,32,32, gameDevice)
+            : base("player", position,32,32, gameDevice)
         {
             this.position = position;
             this.mediator = mediator;
@@ -63,22 +61,16 @@ namespace OneButtonGame.Acter
 
         public override void Update(GameTime gameTime)
         {
-            //angle *= (float)Math.PI / 180;
-            position.X +=  100 + (float)Math.Sin(angle);
-            position.Y += 200 + (float)Math.Sin(2*angle);
             playerPosition = this.position;
-            //position = new Vector2((float)Math.Sin(angle)*12+position.X,
-            //    (float)Math.Sin(angle * 2) * 2+position.X);
-
             if (Keyboard.GetState().IsKeyDown(Keys.Space))
             {
                 angle += rotate;
                 position = CalcPosition(center, angle, rad);
 
             }
-            gameObjectManager.Add(new PlayerBullet(position,
+            GamePlay.gameObject.Add(new PlayerBullet(playerPosition,
      gameDevice, mediator, gameObjectManager));
-       gameObjectManager.Add(new Option(position, gameDevice, mediator,gameObjectManager));
+
         }
         public Vector2 CalcPosition( Vector2 position,float angle,float radius)
         { 

@@ -19,7 +19,7 @@ namespace OneButtonGame.Acter
         Vector2 playerPosition;
 
         public EnemyBullet(Vector2 position, GameDevice gameDevice, IGameObjectMediator mediator)
-            :base("EnemyBullet",position,64,64,gameDevice)
+            :base("Bullet2",position,64,64,gameDevice)
         {
             this.position = position;
             this.mediator = mediator;

@@ -13,10 +13,11 @@ namespace OneButtonGame.Scene
     class GamePlay : IScene
     {
 
-        GameObjectManager gameObject;
+        public static GameObjectManager gameObject;
         public bool isEnd;
         Player player;
         Enemy enemy;
+        PlayerBullet playerBullet;
         private Random rnd=new Random();
         int spawnTime=60;
         Option option;
@@ -36,15 +37,12 @@ namespace OneButtonGame.Scene
         public void Initialize()
         {
             gameObject.Initialize();
-            player = new Player(new Vector2(420 - 16, 420 - 43),
-            GameDevice.Instance(), gameObject, gameObject);
-
             player = new Player(new Vector2(420 , 600),
             GameDevice.Instance(), gameObject, gameObject);
             gameObject.Add(player);
-            //option = new Option(player.GetPosition(),
-            //    GameDevice.Instance(), gameObject,gameObject);
+
             gameObject.Add(option);
+            gameObject.Add(playerBullet);
             isEnd = false;
         }
 

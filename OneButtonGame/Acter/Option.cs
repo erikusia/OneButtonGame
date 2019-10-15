@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using OneButtonGame.Device;
+using OneButtonGame.Scene;
 using OneButtonGame.Util;
 
 namespace OneButtonGame.Acter
@@ -21,7 +22,7 @@ namespace OneButtonGame.Acter
         int hp;
 
         public Option(Vector2 position, GameDevice gameDevice, IGameObjectMediator mediator,GameObjectManager gameObjectManager)
-            : base("block", position, 64, 64, gameDevice)
+            : base("player", position, 64, 64, gameDevice)
         {
             this.position = position;
             this.mediator = mediator;
@@ -59,7 +60,7 @@ namespace OneButtonGame.Acter
         {
             angle += rotate;
            position= CalcPosition(center, angle, rad);
-
+            GamePlay.gameObject.Add(new PlayerBullet(position, gameDevice, mediator, gameObjectManager));
         }
         public Vector2 CalcPosition(Vector2 center, float angle, float radius)
         {

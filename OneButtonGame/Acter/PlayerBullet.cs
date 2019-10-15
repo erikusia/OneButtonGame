@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework;
 using OneButtonGame.Def;
 using OneButtonGame.Device;
 using OneButtonGame.Util;
+using OneButtonGame.Scene;
 
 namespace OneButtonGame.Acter
 {
@@ -16,14 +17,15 @@ namespace OneButtonGame.Acter
         private IGameObjectMediator mediator;
         Vector2 speed;
         Range range;
+        int shotTime;
         public PlayerBullet(Vector2 position,GameDevice gameDevice,IGameObjectMediator mediator, GameObjectManager gameObjectManager)
-            :base("Bullet",position,32,32,gameDevice)
+            :base("Bullet1",position,32,32,gameDevice)
         {
             this.position = position;
             this.mediator = mediator;
             this.gameObjectManager = gameObjectManager;
-            speed = new Vector2(0, -3);
-            
+            speed = new Vector2(0, -40);
+            shotTime = 60;
         }
         public  PlayerBullet(PlayerBullet other)
             :this(other.position,other.gameDevice,other.mediator,other.gameObjectManager)
@@ -45,7 +47,8 @@ namespace OneButtonGame.Acter
 
         public override void Update(GameTime gameTime)
         {
-                position += speed *30;
+
+                position += speed *2;
 
             range = new Range(0, Screen.Width);
 

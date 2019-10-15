@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using OneButtonGame.Acter;
 using OneButtonGame.Device;
+using OneButtonGame.Scene;
 
 namespace OneButtonGame.Acter
 {
@@ -44,21 +45,21 @@ namespace OneButtonGame.Acter
 
         private void playerBulletHit(GameObject gameObject)
         {
-            switch(rnd.Next(0,6))
-            {
-                case 0: 
-                    break;
-                case 1:gameObjectManager.Add(new ScoreItem(position, gameDevice, mediator));
-                    break;
-                case 2:gameObjectManager.Add(new OptionItem(position, gameDevice, mediator));
-                    break;
-                case 3:gameObjectManager.Add(new PowerUpItem(position, gameDevice, mediator));
-                    break;
-                case 4:
-                    break;
-                case 5:
-                    break;
-            }
+            //switch(rnd.Next(0,6))
+            //{
+            //    case 0: 
+            //        break;
+            //    case 1:gameObjectManager.Add(new ScoreItem(position, gameDevice, mediator));
+            //        break;
+            //    case 2:gameObjectManager.Add(new OptionItem(position, gameDevice, mediator));
+            //        break;
+            //    case 3:gameObjectManager.Add(new PowerUpItem(position, gameDevice, mediator));
+            //        break;
+            //    case 4:
+            //        break;
+            //    case 5:
+            //        break;
+            //}
         }
 
         public override void Update(GameTime gameTime)
@@ -79,7 +80,8 @@ namespace OneButtonGame.Acter
             if (shotTime >= 60)
             {
                 
-                gameObjectManager.Add(new EnemyBullet(position, gameDevice, mediator));
+                GamePlay.gameObject.Add(new EnemyBullet(position, gameDevice, mediator));
+                shotTime = 0;
             }
         }
     }
