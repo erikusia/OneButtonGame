@@ -9,33 +9,33 @@ using OneButtonGame.Util;
 
 namespace OneButtonGame.Acter
 {
-    class PowerUpItem:GameObject
+    class OptionItem : GameObject
     {
         private GameObjectManager gameObjectManager;
         private IGameObjectMediator mediator;
         Vector2 speed;
         Range range;
 
-        public PowerUpItem(Vector2 position, GameDevice gameDevice, IGameObjectMediator mediator)
+        public OptionItem(Vector2 position, GameDevice gameDevice, IGameObjectMediator mediator)
             : base("PowerUp", position, 64, 64, gameDevice)
         {
             this.position = position;
             this.mediator = mediator;
         }
 
-        public PowerUpItem(PowerUpItem other)
+        public OptionItem(OptionItem other)
             : this(other.position, other.gameDevice, other.mediator)
         {
 
         }
         public override object Clone()
         {
-            return new PowerUpItem(this);
+            return new OptionItem(this);
         }
 
         public override void Hit(GameObject gameObject)
         {
-            if(gameObject is Player)
+            if (gameObject is Player)
             {
                 isDeadFlag = true;
             }

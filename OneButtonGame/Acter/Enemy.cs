@@ -17,12 +17,12 @@ namespace OneButtonGame.Acter
         private Random rnd = new Random();
         int a;
         int shotTime;
+
         public Enemy(Vector2 position, GameDevice gameDevice, IGameObjectMediator mediator)
             :base("Enemy",position,32,32,gameDevice)
         {
             this.position = position;
             this.mediator = mediator;
-            gameObjectManager = new GameObjectManager();
         }
         public Enemy(Enemy other)
             :this(other.position,other.gameDevice,other.mediator)
@@ -45,41 +45,41 @@ namespace OneButtonGame.Acter
 
         private void playerBulletHit(GameObject gameObject)
         {
-            switch(rnd.Next(0,6))
-            {
-                case 0: 
-                    break;
-                case 1:gameObjectManager.Add(new ScoreItem(position, gameDevice, mediator));
-                    break;
-                case 2:gameObjectManager.Add(new Option(position, gameDevice, mediator));
-                    break;
-                case 3:gameObjectManager.Add(new PowerUpItem(position, gameDevice, mediator));
-                    break;
-                case 4:
-                    break;
-                case 5:
-                    break;
-            }
+            //switch(rnd.Next(0,6))
+            //{
+            //    case 0: 
+            //        break;
+            //    case 1:gameObjectManager.Add(new ScoreItem(position, gameDevice, mediator));
+            //        break;
+            //    case 2:gameObjectManager.Add(new OptionItem(position, gameDevice, mediator));
+            //        break;
+            //    case 3:gameObjectManager.Add(new PowerUpItem(position, gameDevice, mediator));
+            //        break;
+            //    case 4:
+            //        break;
+            //    case 5:
+            //        break;
+            //}
         }
 
         public override void Update(GameTime gameTime)
         {
+
             switch (a)
             {
-                case 0:
-                    position.Y += 2;
-                    if (position.Y >= 100)
+                case 0:position.Y += 2;
+                    if (position.Y>=100)
                     {
                         a += 1;
                     }
                     break;
-                case 1:
-                    position.Y -= 2;
+                case 1:position.Y -= 2;
                     break;
             }
             shotTime += 1;
             if (shotTime >= 60)
             {
+                
                 GamePlay.gameObject.Add(new EnemyBullet(position, gameDevice, mediator));
                 shotTime = 0;
             }
