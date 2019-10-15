@@ -18,7 +18,7 @@ namespace OneButtonGame.Acter
         Range range;
 
         public PlayerBullet(Vector2 position,GameDevice gameDevice,IGameObjectMediator mediator)
-            :base("PlayerBullet",position,32,32,gameDevice)
+            :base("Bullet",position,32,32,gameDevice)
         {
             this.position = position;
             this.mediator = mediator;
