@@ -27,6 +27,7 @@ namespace OneButtonGame.Acter
             playerPosition = new Vector2(Player.playerPosition.X,playerPosition.Y);
             Console.WriteLine(playerPosition);
             a = playerPosition - position;
+            a.Normalize();
 
         }
         public EnemyBullet(EnemyBullet other)
@@ -49,7 +50,7 @@ namespace OneButtonGame.Acter
 
         public override void Update(GameTime gameTime)
         {
-
+            position += a*5;
         }
     }
 }

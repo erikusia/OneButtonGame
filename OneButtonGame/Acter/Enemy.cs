@@ -85,12 +85,12 @@ namespace OneButtonGame.Acter
                     break;
             }
             shotTime += 1;
-            //if (shotTime >= 60)
-            //{
-                
-            //    GamePlay.gameObject.Add(new EnemyBullet(position, gameDevice, mediator));
-            //    shotTime = 0;
-            //}
+            if (shotTime >= 60)
+            {
+
+                GamePlay.gameObject.Add(new EnemyBullet(position, gameDevice, mediator));
+                shotTime = 0;
+            }
         }
     }
 }
