@@ -23,6 +23,7 @@ namespace OneButtonGame.Acter
         float angle;
         Vector2 center;
         int shotTime;
+        int optionNumber;
 
         public Player( Vector2 position,  GameDevice gameDevice, IGameObjectMediator mediator,GameObjectManager gameObjectManager) 
             : base("player", position,64,64, gameDevice)
@@ -58,6 +59,16 @@ namespace OneButtonGame.Acter
             if (hp<0)
             {
                 isDeadFlag = true;
+            }
+            if (gameObject is OptionItem)
+            {
+                optionNumber = optionNumber + 1;
+
+                if (optionNumber <= 6)
+                {
+                    Console.WriteLine(optionNumber);
+                    GamePlay.gameObject.Add(new Option(position, gameDevice, mediator, gameObjectManager));
+                }
             }
         }
 
