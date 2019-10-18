@@ -17,7 +17,7 @@ namespace OneButtonGame.Acter
         Range range;
 
         public PowerUpItem(Vector2 position, GameDevice gameDevice, IGameObjectMediator mediator)
-            : base("block", position, 64, 64, gameDevice)
+            : base("Bulletup", position, 64, 64, gameDevice)
         {
             this.position = position;
             this.mediator = mediator;
@@ -43,7 +43,7 @@ namespace OneButtonGame.Acter
 
         public override void Update(GameTime gameTime)
         {
-
+            position.Y += 5;
         }
     }
 }

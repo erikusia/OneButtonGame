@@ -50,9 +50,10 @@ namespace OneButtonGame.Acter
             {
                 hp -= 1;
             }
-            if(hp<0)
+
+            if(gameObject is EnemyBullet)
             {
-                isDeadFlag = true;
+                hp -= 1;
             }
         }
 
@@ -61,6 +62,11 @@ namespace OneButtonGame.Acter
             angle += rotate;
            position= CalcPosition(Player.playerPosition, angle, rad);
             GamePlay.gameObject.Add(new PlayerBullet(new Vector2(position.X,position.Y-64), gameDevice, mediator, gameObjectManager));
+
+            if (hp <= 0)
+            {
+                isDeadFlag = true;
+            }
         }
         public Vector2 CalcPosition(Vector2 center, float angle, float radius)
         {

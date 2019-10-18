@@ -24,6 +24,7 @@ namespace OneButtonGame.Acter
         Vector2 center;
         int shotTime;
         int optionNumber;
+        int powerUpCount;
 
         public Player( Vector2 position,  GameDevice gameDevice, IGameObjectMediator mediator,GameObjectManager gameObjectManager) 
             : base("player", position,64,64, gameDevice)
@@ -56,10 +57,11 @@ namespace OneButtonGame.Acter
                 hp -= 1;
             }
 
-            if (hp<0)
+            if(gameObject is EnemyBullet)
             {
-                isDeadFlag = true;
+                hp -= 1;
             }
+
             if (gameObject is OptionItem)
             {
                 optionNumber = optionNumber + 1;
@@ -70,6 +72,21 @@ namespace OneButtonGame.Acter
                     GamePlay.gameObject.Add(new Option(position, gameDevice, mediator, gameObjectManager));
                 }
             }
+
+            if(gameObject is PowerUpItem)
+            {
+                powerUpCount += 1;
+            }
+
+            if(gameObject is ScoreItem)
+            {
+                GamePlay.Score += 100;
+            }
+        }
+
+        private void clonePowerUp(GameObject gameObject)
+        {
+
         }
 
         public override void Update(GameTime gameTime)
@@ -81,12 +98,27 @@ namespace OneButtonGame.Acter
                 position = CalcPosition(center, angle, rad);
 
             }
+
             shotTime += 1;
             if (shotTime >= 10)
             {
-                GamePlay.gameObject.Add(new PlayerBullet(new Vector2(playerPosition.X, playerPosition.Y - 64),
-     gameDevice, mediator, gameObjectManager));
+                GamePlay.gameObject.Add(new PlayerBullet(new Vector2(playerPosition.X + 24, playerPosition.Y - 30),
+                gameDevice, mediator, gameObjectManager));
                 shotTime = 0;
+
+                if (powerUpCount>=1)
+                {
+                    GamePlay.gameObject.Add(new PlayerBullet(new Vector2(position.X + 63, position.Y + 32), gameDevice, mediator, gameObjectManager));
+                }
+                if (powerUpCount >= 2)
+                {
+                    GamePlay.gameObject.Add(new PlayerBullet(new Vector2(position.X-1, position.Y + 32), gameDevice, mediator, gameObjectManager));
+                }
+            }
+
+            if (hp <= 0)
+            {
+                isDeadFlag = true;
             }
 
         }
@@ -95,8 +127,6 @@ namespace OneButtonGame.Acter
             float radian = MathHelper.ToRadians(angle);
             return position+ new Vector2((float)Math.Sin(radian)*2,
                 (float)Math.Sin(2*radian)) * radius;
-
-        }
-
+        }   
     }
 }

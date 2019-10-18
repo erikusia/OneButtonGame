@@ -45,8 +45,6 @@ namespace OneButtonGame.Acter
 
         public override void Update(GameTime gameTime)
         {
-
-
             position += speed;
         }
     }
