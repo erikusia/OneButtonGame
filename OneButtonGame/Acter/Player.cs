@@ -21,6 +21,7 @@ namespace OneButtonGame.Acter
         float rotate;
         float rad;
         float angle;
+        int shotTime=10;
         Vector2 center;
 
         public Player( Vector2 position,  GameDevice gameDevice, IGameObjectMediator mediator,GameObjectManager gameObjectManager) 
@@ -68,8 +69,14 @@ namespace OneButtonGame.Acter
                 position = CalcPosition(center, angle, rad);
 
             }
-            GamePlay.gameObject.Add(new PlayerBullet(playerPosition,
-     gameDevice, mediator, gameObjectManager));
+
+            shotTime += 1;
+            if (shotTime >= 10)
+            {
+                GamePlay.gameObject.Add(new PlayerBullet(playerPosition,
+            gameDevice, mediator, gameObjectManager));
+                shotTime = 0;
+            }
 
         }
         public Vector2 CalcPosition( Vector2 position,float angle,float radius)

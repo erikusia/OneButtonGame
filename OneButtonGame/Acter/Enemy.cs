@@ -12,7 +12,6 @@ namespace OneButtonGame.Acter
 {
     class Enemy : GameObject
     {
-        private GameObjectManager gameObjectManager;
         private IGameObjectMediator mediator;
         private Random rnd = new Random();
         int a;
@@ -39,27 +38,47 @@ namespace OneButtonGame.Acter
         {
             if(gameObject is PlayerBullet)
             {
+                Console.WriteLine("hit");
                 playerBulletHit(gameObject);
             }
         }
 
         private void playerBulletHit(GameObject gameObject)
         {
-            //switch(rnd.Next(0,6))
-            //{
-            //    case 0: 
-            //        break;
-            //    case 1:gameObjectManager.Add(new ScoreItem(position, gameDevice, mediator));
-            //        break;
-            //    case 2:gameObjectManager.Add(new OptionItem(position, gameDevice, mediator));
-            //        break;
-            //    case 3:gameObjectManager.Add(new PowerUpItem(position, gameDevice, mediator));
-            //        break;
-            //    case 4:
-            //        break;
-            //    case 5:
-            //        break;
-            //}
+            switch (rnd.Next(0, 10))
+            {
+                case 0:
+                    GamePlay.gameObject.Add(null);
+                    break;
+                case 1:
+                    GamePlay.gameObject.Add(new ScoreItem(position, gameDevice, mediator));
+                    break;
+                case 2:
+                    GamePlay.gameObject.Add(new OptionItem(position, gameDevice, mediator));
+                    break;
+                case 3:
+                    GamePlay.gameObject.Add(new PowerUpItem(position, gameDevice, mediator));
+                    break;
+                case 4:
+                    GamePlay.gameObject.Add(null);
+                    break;
+                case 5:
+                    GamePlay.gameObject.Add(null);
+                    break;
+                case 6:
+                    GamePlay.gameObject.Add(null);
+                    break;
+                case 7:
+                    GamePlay.gameObject.Add(null);
+                    break;
+                case 8:
+                    GamePlay.gameObject.Add(null);
+                    break;
+                case 9:
+                    GamePlay.gameObject.Add(null);
+                    break;
+            }
+            isDeadFlag = true;
         }
 
         public override void Update(GameTime gameTime)

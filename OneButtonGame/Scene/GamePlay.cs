@@ -21,6 +21,7 @@ namespace OneButtonGame.Scene
         private Random rnd=new Random();
         int spawnTime=60;
         Option option;
+
         public GamePlay()
             
         {
@@ -39,10 +40,10 @@ namespace OneButtonGame.Scene
             gameObject.Initialize();
             player = new Player(new Vector2(420 , 600),
             GameDevice.Instance(), gameObject, gameObject);
-            gameObject.Add(player);
-
-            gameObject.Add(option);
             gameObject.Add(playerBullet);
+            gameObject.Add(player);
+            gameObject.Add(option);
+
             isEnd = false;
         }
 

@@ -17,6 +17,7 @@ namespace OneButtonGame.Acter
         Range range;
         private EnemyBullet enemyBullet;
         Vector2 playerPosition;
+        Vector2 a;
 
         public EnemyBullet(Vector2 position, GameDevice gameDevice, IGameObjectMediator mediator)
             :base("Bullet2",position,64,64,gameDevice)
@@ -24,7 +25,9 @@ namespace OneButtonGame.Acter
             this.position = position;
             this.mediator = mediator;
             playerPosition = new Vector2(Player.playerPosition.X,playerPosition.Y);
-            
+            Console.WriteLine(playerPosition);
+            a = playerPosition - position;
+
         }
         public EnemyBullet(EnemyBullet other)
             :this(other.position, other.gameDevice, other.mediator)
@@ -46,7 +49,7 @@ namespace OneButtonGame.Acter
 
         public override void Update(GameTime gameTime)
         {
-            
+
         }
     }
 }

@@ -17,7 +17,7 @@ namespace OneButtonGame.Acter
         Range range;
 
         public OptionItem(Vector2 position, GameDevice gameDevice, IGameObjectMediator mediator)
-            : base("PowerUp", position, 64, 64, gameDevice)
+            : base("block", position, 64, 64, gameDevice)
         {
             this.position = position;
             this.mediator = mediator;

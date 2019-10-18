@@ -24,7 +24,7 @@ namespace OneButtonGame.Acter
             this.position = position;
             this.mediator = mediator;
             this.gameObjectManager = gameObjectManager;
-            speed = new Vector2(0, -40);
+            speed = new Vector2(0, -30);
             shotTime = 60;
         }
         public  PlayerBullet(PlayerBullet other)
@@ -48,7 +48,7 @@ namespace OneButtonGame.Acter
         public override void Update(GameTime gameTime)
         {
 
-                position += speed *2;
+                position += speed;
 
             range = new Range(0, Screen.Width);
 
