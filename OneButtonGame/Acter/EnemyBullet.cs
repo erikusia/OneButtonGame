@@ -24,7 +24,7 @@ namespace OneButtonGame.Acter
         {
             this.position = position;
             this.mediator = mediator;
-            playerPosition = new Vector2(Player.playerPosition.X,playerPosition.Y);
+            playerPosition = new Vector2(Player.playerPosition.X,Player.playerPosition.Y);
             Console.WriteLine(playerPosition);
             a = playerPosition - position;
             a.Normalize();
