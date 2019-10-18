@@ -28,7 +28,7 @@ namespace OneButtonGame.Acter
             this.mediator = mediator;
             this.gameObjectManager = gameObjectManager;
             rotate = 2.0f;
-            rad = 150.0f;
+            rad = 64.0f;
             angle = 0;
             center = new Vector2(420, 600);
             hp = 3;
@@ -59,8 +59,8 @@ namespace OneButtonGame.Acter
         public override void Update(GameTime gameTime)
         {
             angle += rotate;
-           position= CalcPosition(center, angle, rad);
-            GamePlay.gameObject.Add(new PlayerBullet(position, gameDevice, mediator, gameObjectManager));
+           position= CalcPosition(Player.playerPosition, angle, rad);
+            GamePlay.gameObject.Add(new PlayerBullet(new Vector2(position.X,position.Y-64), gameDevice, mediator, gameObjectManager));
         }
         public Vector2 CalcPosition(Vector2 center, float angle, float radius)
         {

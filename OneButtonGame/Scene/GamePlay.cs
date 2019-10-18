@@ -18,10 +18,11 @@ namespace OneButtonGame.Scene
         Player player;
         Enemy enemy;
         PlayerBullet playerBullet;
+        OptionItem optionItem;
         private Random rnd=new Random();
         int spawnTime=60;
         Option option;
-
+        int optionNumber;
         public GamePlay()
             
         {
@@ -38,12 +39,14 @@ namespace OneButtonGame.Scene
         public void Initialize()
         {
             gameObject.Initialize();
+            gameObject.Add(playerBullet);
             player = new Player(new Vector2(420 , 600),
             GameDevice.Instance(), gameObject, gameObject);
-            gameObject.Add(playerBullet);
+            optionNumber = 0;
             gameObject.Add(player);
+         
             gameObject.Add(option);
-
+         
             isEnd = false;
         }
 
@@ -74,6 +77,7 @@ namespace OneButtonGame.Scene
                 gameObject.Add(enemy);
                 spawnTime = 0;
             }
+           
 
             gameObject.Update(gameTime);
         }
