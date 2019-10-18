@@ -19,7 +19,7 @@ namespace OneButtonGame.Acter
 
         int score;
         public ScoreItem(Vector2 position, GameDevice gameDevice, IGameObjectMediator mediator)
-            : base("ScoreItem", position, 64, 64, gameDevice)
+            : base("block", position, 64, 64, gameDevice)
         {
             this.position = position;
             this.mediator = mediator;

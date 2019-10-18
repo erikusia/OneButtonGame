@@ -39,11 +39,13 @@ namespace OneButtonGame.Scene
             string[,] data = new string[,]
             {
                 //{ "back", path},//背景 
-                {"player",path },
+            
                 {"Enemy",path },
                 {"Enemy2",path },
                 {"Bullet1",path },
                 {"Bullet2",path },
+                    {"player",path },
+                    {"block",path },
                 //{"arrow-12",path },
                 //{"bow",path },
                 //必要に応じて自分で追加

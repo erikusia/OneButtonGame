@@ -19,7 +19,7 @@ namespace OneButtonGame.Acter
         int shotTime;
 
         public Enemy(Vector2 position, GameDevice gameDevice, IGameObjectMediator mediator)
-            :base("Enemy",position,32,32,gameDevice)
+            :base("Enemy",position,64,64,gameDevice)
         {
             this.position = position;
             this.mediator = mediator;
@@ -40,26 +40,34 @@ namespace OneButtonGame.Acter
             if(gameObject is PlayerBullet)
             {
                 playerBulletHit(gameObject);
+                isDeadFlag = true;
             }
+            
         }
 
         private void playerBulletHit(GameObject gameObject)
         {
-            //switch(rnd.Next(0,6))
-            //{
-            //    case 0: 
-            //        break;
-            //    case 1:gameObjectManager.Add(new ScoreItem(position, gameDevice, mediator));
-            //        break;
-            //    case 2:gameObjectManager.Add(new OptionItem(position, gameDevice, mediator));
-            //        break;
-            //    case 3:gameObjectManager.Add(new PowerUpItem(position, gameDevice, mediator));
-            //        break;
-            //    case 4:
-            //        break;
-            //    case 5:
-            //        break;
-            //}
+            switch (rnd.Next(0, 6))
+            {
+                case 0:
+                    GamePlay.gameObject.Add(null);
+                    break;
+                case 1:
+                    GamePlay.gameObject.Add(null);
+                    break;
+                case 2:
+                    GamePlay.gameObject.Add(new OptionItem(position, gameDevice, mediator));
+                    break;
+                case 3:
+                      GamePlay.gameObject.Add(null);
+                    break;
+                case 4:
+                    GamePlay.gameObject.Add(null);
+                    break;
+                case 5:
+                    GamePlay.gameObject.Add(null);
+                    break;
+            }
         }
 
         public override void Update(GameTime gameTime)
@@ -77,12 +85,12 @@ namespace OneButtonGame.Acter
                     break;
             }
             shotTime += 1;
-            if (shotTime >= 60)
-            {
+            //if (shotTime >= 60)
+            //{
                 
-                GamePlay.gameObject.Add(new EnemyBullet(position, gameDevice, mediator));
-                shotTime = 0;
-            }
+            //    GamePlay.gameObject.Add(new EnemyBullet(position, gameDevice, mediator));
+            //    shotTime = 0;
+            //}
         }
     }
 }

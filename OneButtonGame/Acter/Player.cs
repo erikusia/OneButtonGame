@@ -22,9 +22,10 @@ namespace OneButtonGame.Acter
         float rad;
         float angle;
         Vector2 center;
+        int shotTime;
 
         public Player( Vector2 position,  GameDevice gameDevice, IGameObjectMediator mediator,GameObjectManager gameObjectManager) 
-            : base("player", position,32,32, gameDevice)
+            : base("player", position,64,64, gameDevice)
         {
             this.position = position;
             this.mediator = mediator;
@@ -34,6 +35,7 @@ namespace OneButtonGame.Acter
             rad = 150.0f;
             angle = 0;
             center = new Vector2(420, 600);
+            shotTime = 10;
         }
 
         public Player(Player other)
@@ -68,8 +70,13 @@ namespace OneButtonGame.Acter
                 position = CalcPosition(center, angle, rad);
 
             }
-            GamePlay.gameObject.Add(new PlayerBullet(playerPosition,
+            shotTime += 1;
+            if (shotTime >= 10)
+            {
+                GamePlay.gameObject.Add(new PlayerBullet(new Vector2(playerPosition.X, playerPosition.Y - 64),
      gameDevice, mediator, gameObjectManager));
+                shotTime = 0;
+            }
 
         }
         public Vector2 CalcPosition( Vector2 position,float angle,float radius)
