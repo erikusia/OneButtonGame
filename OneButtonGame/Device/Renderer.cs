@@ -175,13 +175,13 @@ namespace OneButtonGame.Device
                 spriteBatch.Draw(
                     textures[assetName],
                     position,
-                    new Rectangle((n - '0') * width, 0, width, 64),
+                    new Rectangle((n - '0') * width, 0, width, 32),
                     Color.White);
 
                 spriteBatch2.Draw(
                     textures[assetName],
                     position,
-                    new Rectangle((n - '0') * width, 0, width, 64),
+                    new Rectangle((n - '0') * width, 0, width, 32),
                     Color.White);
 
                 //１文字描画したら１桁分右にずらす

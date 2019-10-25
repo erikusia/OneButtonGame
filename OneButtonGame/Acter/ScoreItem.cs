@@ -1,5 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
+using OneButtonGame.Def;
 using OneButtonGame.Device;
+using OneButtonGame.Scene;
 using OneButtonGame.Util;
 using System;
 using System.Collections.Generic;
@@ -23,7 +25,6 @@ namespace OneButtonGame.Acter
         {
             this.position = position;
             this.mediator = mediator;
-            score = 0;
         }
 
         public ScoreItem(ScoreItem other)
@@ -39,16 +40,27 @@ namespace OneButtonGame.Acter
         public override void Hit(GameObject gameObject)
         {
             if(gameObject is Player)
-            {
-                score += 2000;
+            {              
+                GamePlay.Score += 100;
                 isDeadFlag = true;
-                
             }
         }
 
         public override void Update(GameTime gameTime)
         {
-            
+            position.Y += 3;
+
+            range = new Range(0, Screen.Width);
+            if (range.IsOutOfRange((int)position.X))
+            {
+                isDeadFlag = true;
+            }
+            range = new Range(0, Screen.Height);
+            if (range.IsOutOfRange((int)position.Y))
+            {
+                isDeadFlag = true;
+
+            }
         }
     }
 }

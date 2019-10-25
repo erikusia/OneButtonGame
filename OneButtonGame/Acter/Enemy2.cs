@@ -1,18 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
-using OneButtonGame.Acter;
+﻿using Microsoft.Xna.Framework;
 using OneButtonGame.Def;
 using OneButtonGame.Device;
 using OneButtonGame.Scene;
 using OneButtonGame.Util;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace OneButtonGame.Acter
 {
-    class Enemy : GameObject
+    class Enemy2:GameObject
     {
         private GameObjectManager gameObjectManager;
         private IGameObjectMediator mediator;
@@ -22,31 +21,31 @@ namespace OneButtonGame.Acter
         Range range;
 
 
-        public Enemy(Vector2 position, GameDevice gameDevice, IGameObjectMediator mediator)
-            :base("Enemy",position,64,64,gameDevice)
+        public Enemy2(Vector2 position, GameDevice gameDevice, IGameObjectMediator mediator)
+            : base("Enemy2", position, 64, 64, gameDevice)
         {
             this.position = position;
             this.mediator = mediator;
         }
-        public Enemy(Enemy other)
-            :this(other.position,other.gameDevice,other.mediator)
+        public Enemy2(Enemy2 other)
+            : this(other.position, other.gameDevice, other.mediator)
         {
 
         }
 
         public override object Clone()
         {
-            return new Enemy(this);
+            return new Enemy2(this);
         }
 
         public override void Hit(GameObject gameObject)
         {
-            if(gameObject is PlayerBullet)
+            if (gameObject is PlayerBullet)
             {
                 playerBulletHit(gameObject);
                 isDeadFlag = true;
             }
-            
+
         }
 
         private void playerBulletHit(GameObject gameObject)
@@ -64,7 +63,7 @@ namespace OneButtonGame.Acter
                     GamePlay.gameObject.Add(new OptionItem(position, gameDevice, mediator));
                     break;
                 case 3:
-                      GamePlay.gameObject.Add(null);
+                    GamePlay.gameObject.Add(null);
                     break;
                 case 4:
                     GamePlay.gameObject.Add(null);
@@ -80,13 +79,15 @@ namespace OneButtonGame.Acter
             //移動
             switch (a)
             {
-                case 0:position.Y += 2;
-                    if (position.Y>=150)
+                case 0:
+                    position.Y += 2;
+                    if (position.Y >= 150)
                     {
                         a += 1;
                     }
                     break;
-                case 1:position.Y -= 2;
+                case 1:
+                    position.Y -= 2;
                     break;
             }
 

@@ -19,7 +19,7 @@ namespace OneButtonGame.Acter
         Range range;
         int shotTime;
         public PlayerBullet(Vector2 position,GameDevice gameDevice,IGameObjectMediator mediator, GameObjectManager gameObjectManager)
-            :base("Bullet1",position,32,32,gameDevice)
+            :base("Bullet1",position,16,16,gameDevice)
         {
             this.position = position;
             this.mediator = mediator;
@@ -48,22 +48,19 @@ namespace OneButtonGame.Acter
         public override void Update(GameTime gameTime)
         {
 
-                position += speed;
+            position += speed;
 
             range = new Range(0, Screen.Width);
+            if (range.IsOutOfRange((int)position.X))
+            {
+                isDeadFlag = true;
+            }
+            range = new Range(0, Screen.Height);
+            if (range.IsOutOfRange((int)position.Y))
+            {
+                isDeadFlag = true;
 
-                if (range.IsOutOfRange((int)position.X))
-                {
-                    isDeadFlag = true;
-                }
-                range = new Range(0, Screen.Height);
-                if (range.IsOutOfRange((int)position.Y))
-                {
-                    isDeadFlag = true;
-
-                }
-            
-
+            }
         }
     }
 }
