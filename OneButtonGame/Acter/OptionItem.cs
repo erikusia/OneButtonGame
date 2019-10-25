@@ -21,7 +21,7 @@ namespace OneButtonGame.Acter
         {
             this.position = position;
             this.mediator = mediator;
-            speed = new Vector2(0, 1);
+            speed = new Vector2(0, 5);
         }
 
         public OptionItem(OptionItem other)
