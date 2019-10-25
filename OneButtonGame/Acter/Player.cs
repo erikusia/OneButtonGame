@@ -25,6 +25,7 @@ namespace OneButtonGame.Acter
         int shotTime;
         int optionNumber;
         int powerUpCount;
+        public static bool DeadFlag;
 
         public Player( Vector2 position,  GameDevice gameDevice, IGameObjectMediator mediator,GameObjectManager gameObjectManager) 
             : base("player", position,64,64, gameDevice)
@@ -38,6 +39,7 @@ namespace OneButtonGame.Acter
             angle = 0;
             center = new Vector2(420, 600);
             shotTime = 10;
+            DeadFlag = false;
         }
 
         public Player(Player other)
@@ -118,6 +120,7 @@ namespace OneButtonGame.Acter
 
             if (hp <= 0)
             {
+                DeadFlag = true;
                 isDeadFlag = true;
             }
 

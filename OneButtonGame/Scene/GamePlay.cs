@@ -25,6 +25,8 @@ namespace OneButtonGame.Scene
         int optionNumber;
         GameTime tp;
         public static int Score;
+        int highScore;
+        int scoreTime;
 
         public GamePlay()         
         {
@@ -32,13 +34,34 @@ namespace OneButtonGame.Scene
             isEnd = false;
             tp = new GameTime();
             Score = 0;
+            
         }
         public void Draw(Renderer renderer)
         {
             renderer.Begin();
             gameObject.Draw(renderer);
+            if(Player.DeadFlag == false)
+            {
+                renderer.DrawNumber("number", new Vector2(150, 0), Score);
+                
+            }
+            else if (Player.DeadFlag == true)
+            {
+                renderer.DrawTexture("ScoreBack", new Vector2(Screen.Width / 2-420, Screen.Height / 2-452));
+                renderer.DrawNumber("number", new Vector2(Screen.Width / 2-16, Screen.Height / 2-16), Score);
+                if (highScore < Score)
+                {
+                    highScore = Score;
+                }
+                renderer.DrawNumber("number", new Vector2(Screen.Width / 2 - 16, Screen.Height / 2 + 64), highScore);
 
-            renderer.DrawNumber("number", new Vector2(150,0), Score);
+                if (Keyboard.GetState().IsKeyDown(Keys.Space))
+                {
+                    Score = 0;
+                    isEnd = true;
+                }
+
+            }
             renderer.End();
         }
 
@@ -49,8 +72,7 @@ namespace OneButtonGame.Scene
             player = new Player(new Vector2(420 , 600),
             GameDevice.Instance(), gameObject, gameObject);
             optionNumber = 0;
-            gameObject.Add(player);
-         
+            gameObject.Add(player);       
             gameObject.Add(option);
          
             isEnd = false;
@@ -63,7 +85,7 @@ namespace OneButtonGame.Scene
 
         public Scene Next()
         {
-            return Scene.Result;
+            return Scene.GamePlay;
         }
 
         public void Shutdown()
@@ -73,8 +95,17 @@ namespace OneButtonGame.Scene
 
         public void Update(GameTime gameTime)
         {
-            Score += gameTime.TotalGameTime.Seconds;
             spawnTime += 1;
+            scoreTime += 1;
+
+            if (scoreTime >= 20)
+            {
+                if(Player.DeadFlag == false)
+                {
+                    Score += 1;
+                }
+                scoreTime = 0;
+            }
 
             if ( gameTime.TotalGameTime.Seconds<= 20)
             {
@@ -116,7 +147,6 @@ namespace OneButtonGame.Scene
                     spawnTime = 0;
                 }
             }
-
             gameObject.Update(gameTime);
         }
 

@@ -56,7 +56,7 @@ namespace OneButtonGame.Acter
 
         public override void Update(GameTime gameTime)
         {
-            position += a*5;
+            position += a * 5;
 
             //画面外に出たら
             range = new Range(0, Screen.Width);

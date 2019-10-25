@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
+using OneButtonGame.Def;
 using OneButtonGame.Device;
 using OneButtonGame.Util;
 
@@ -43,7 +44,19 @@ namespace OneButtonGame.Acter
 
         public override void Update(GameTime gameTime)
         {
-            position.Y += 5;
+            position.Y += 3;
+
+            range = new Range(0, Screen.Width);
+            if (range.IsOutOfRange((int)position.X))
+            {
+                isDeadFlag = true;
+            }
+            range = new Range(0, Screen.Height);
+            if (range.IsOutOfRange((int)position.Y))
+            {
+                isDeadFlag = true;
+
+            }
         }
     }
 }

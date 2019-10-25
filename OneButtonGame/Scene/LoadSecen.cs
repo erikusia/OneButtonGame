@@ -48,6 +48,10 @@ namespace OneButtonGame.Scene
                 {"block",path },
                 {"number",path },
                 {"Bulletup",path},
+                {"ScoreBack",path },
+                {"score",path },
+                {"highscore",path },
+                {"option",path },
                 //{"arrow-12",path },
                 //{"bow",path },
                 //必要に応じて自分で追加
