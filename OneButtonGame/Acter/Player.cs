@@ -17,6 +17,7 @@ namespace OneButtonGame.Acter
         public static int hp;
         public static Vector2 playerPosition;
         private IGameObjectMediator mediator;
+        private Option prevOption = null;
         private GameObjectManager gameObjectManager;
         float rotate;
         float rad;
@@ -70,8 +71,15 @@ namespace OneButtonGame.Acter
 
                 if (optionNumber <= 6)
                 {
-                    Console.WriteLine(optionNumber);
-                    GamePlay.gameObject.Add(new Option(position, gameDevice, mediator, gameObjectManager));
+                    float deg = 0f;
+                    if (prevOption != null)
+                    {
+                        deg = prevOption.getAngle() + 60f;
+                    }
+                    var op = new Option(Vector2.Zero, gameDevice, mediator, gameObjectManager,  deg);
+                    prevOption = op;
+                    GamePlay.gameObject.Add(op);
+
                 }
             }
 

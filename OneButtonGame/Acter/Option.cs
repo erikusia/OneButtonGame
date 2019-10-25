@@ -27,7 +27,7 @@ namespace OneButtonGame.Acter
         int shotTime;
       public static  List<Vector2> optionPositions = new List<Vector2>();
 
-        public Option(Vector2 position, GameDevice gameDevice, IGameObjectMediator mediator,GameObjectManager gameObjectManager,OptionMgr optionMgr, float angle)
+        public Option(Vector2 position, GameDevice gameDevice, IGameObjectMediator mediator,GameObjectManager gameObjectManager,  float angle)
             : base("player", position, 64, 64, gameDevice)
         {
             this.position = position;
@@ -49,7 +49,7 @@ namespace OneButtonGame.Acter
         }
 
         public Option(Option other)
-            : this(other.position, other.gameDevice,other.mediator,other.gameObjectManager,other.optionMgr,other.angle)
+            : this(other.position, other.gameDevice,other.mediator,other.gameObjectManager,other.angle)
         {
 
         }
