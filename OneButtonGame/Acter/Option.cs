@@ -27,17 +27,16 @@ namespace OneButtonGame.Acter
         int shotTime;
       public static  List<Vector2> optionPositions = new List<Vector2>();
 
-        public Option(Vector2 position, GameDevice gameDevice, IGameObjectMediator mediator,GameObjectManager gameObjectManager,  float angle)
-            : base("player", position, 64, 64, gameDevice)
+        public Option(Vector2 position, GameDevice gameDevice, IGameObjectMediator mediator,GameObjectManager gameObjectManager,  float angle,int hp)
+            : base("option", position, 32, 32, gameDevice)
         {
             this.position = position;
             this.mediator = mediator;
             this.gameObjectManager = gameObjectManager;
-            this.optionMgr = optionMgr;
+            this.hp = hp;
             this.angle = angle;
             rotate = 2.0f;
-            rad = 128.0f;
-            hp = 3;
+            rad = 96.0f;
             shotTime = 10;
             //angle = 0;
             //angle2 = angle + 60;
@@ -49,7 +48,7 @@ namespace OneButtonGame.Acter
         }
 
         public Option(Option other)
-            : this(other.position, other.gameDevice,other.mediator,other.gameObjectManager,other.angle)
+            : this(other.position, other.gameDevice,other.mediator,other.gameObjectManager,other.angle,other.hp)
         {
 
         }
@@ -60,14 +59,16 @@ namespace OneButtonGame.Acter
 
         public override void Hit(GameObject gameObject)
         {
-            if(gameObject is Enemy)
+            if(gameObject is EnemyBullet)
             {
                 hp -= 1;
             }
             if(hp<0)
             {
                 isDeadFlag = true;
+                Player.optionNumber -= 1;
             }
+
         }
 
         public override void Update(GameTime gameTime)
@@ -92,6 +93,11 @@ namespace OneButtonGame.Acter
                 GamePlay.gameObject.Add(new PlayerBullet(new Vector2(position.X, position.Y - 64),
      gameDevice, mediator, gameObjectManager));
                 shotTime = 0;
+            }
+            if (Player.DeadFlag == true)
+            {
+                isDeadFlag = true;
+
             }
         }
         public Vector2 CalcPosition(Vector2 center, float angle, float radius)

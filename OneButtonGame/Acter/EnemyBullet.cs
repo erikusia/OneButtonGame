@@ -47,7 +47,10 @@ namespace OneButtonGame.Acter
             {
                 isDeadFlag = true;
             }
-
+            if(gameObject is Option)
+            {
+                isDeadFlag = true;
+            }
             if(gameObject is EnemyBullet)
             {
                 isDeadFlag = true;
