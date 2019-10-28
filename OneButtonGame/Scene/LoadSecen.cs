@@ -53,6 +53,8 @@ namespace OneButtonGame.Scene
                 {"highscore",path },
                 {"option",path },
                 {"boss",path },
+                {"background",path },
+                {"backwind",path },
                 //{"arrow-12",path },
                 //{"bow",path },
                 //必要に応じて自分で追加
@@ -76,7 +78,6 @@ namespace OneButtonGame.Scene
             string[,] data = new string[,]
             {
                 //{ "titlebgm", path},
-
                 //必要に応じて自分で追加
             };
 
@@ -98,7 +99,15 @@ namespace OneButtonGame.Scene
             string[,] data = new string[,]
             {
                 //{ "titlese", path },
-
+                { "aura", path },
+                { "bossdie", path },
+                { "bulletup", path },
+                { "enemydie", path },
+                { "playerdamage", path },
+                { "playerdie", path },
+                { "scoreup", path },
+                { "shot", path },
+                { "shot-struck", path },
                 //必要に応じて自分で追加
             };
 

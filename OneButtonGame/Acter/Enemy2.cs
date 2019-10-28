@@ -20,7 +20,7 @@ namespace OneButtonGame.Acter
         int shotTime;
         int Time;
         Range range;
-        int hp=70;
+        int hp=50;
     
         public Enemy2(Vector2 position, GameDevice gameDevice, IGameObjectMediator mediator)
             : base("Enemy2", position, 128, 128, gameDevice)

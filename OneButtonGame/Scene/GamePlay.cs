@@ -41,17 +41,25 @@ namespace OneButtonGame.Scene
         }
         public void Draw(Renderer renderer)
         {
-            renderer.Begin();
+            renderer.Begin();         
+            renderer.DrawTexture("background", Vector2.Zero);
+            renderer.DrawTexture("backwind", new Vector2(-15, 904 - 68));
             gameObject.Draw(renderer);
-            if(Player.DeadFlag == false)
+            if (Player.DeadFlag == false)
             {
-                renderer.DrawNumber("number", new Vector2(150, 0), Score);
-                
+                //renderer.DrawNumber("number", new Vector2(150, 0), Score);
+                renderer.DrawTexture("score", new Vector2(-130, 904 - 64));
+                renderer.DrawTexture("highscore", new Vector2(0, 904 - 32));
+                renderer.DrawNumber("number", new Vector2(200, 904 - 64), Score);
+                renderer.DrawNumber("number", new Vector2(310, 904 - 32), highScore);
+
             }
             else if (Player.DeadFlag == true)
             {
                 renderer.DrawTexture("ScoreBack", new Vector2(Screen.Width / 2-420, Screen.Height / 2-452));
+                renderer.DrawTexture("highscore", new Vector2(90, Screen.Height / 2 + 64));
                 renderer.DrawNumber("number", new Vector2(Screen.Width / 2-16, Screen.Height / 2-16), Score);
+                renderer.DrawTexture("score", new Vector2(90, Screen.Height / 2 - 16));
                 if (highScore < Score)
                 {
                     highScore = Score;
