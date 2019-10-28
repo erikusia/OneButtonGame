@@ -22,9 +22,10 @@ namespace OneButtonGame.Acter
         float rotate;
         float rad;
         float angle;
+        Sound sound;
         Vector2 center;
         int shotTime;
-        int optionNumber;
+     public static int optionNumber;
         int powerUpCount;
         public static bool DeadFlag;
 
@@ -36,11 +37,13 @@ namespace OneButtonGame.Acter
             this.gameObjectManager = gameObjectManager;
             hp = 1;
             rotate = 2.0f;
-            rad = 150.0f;
+            rad = 180.0f;
             angle = 0;
-            center = new Vector2(420, 600);
+            center = new Vector2(385, 600);
             shotTime = 10;
             DeadFlag = false;
+            var game = GameDevice.Instance();
+            sound = game.GetSound();
         }
 
         public Player(Player other)
@@ -71,12 +74,13 @@ namespace OneButtonGame.Acter
 
                 if (optionNumber <= 6)
                 {
+                    sound.PlaySE("aura");
                     float deg = 0f;
                     if (prevOption != null)
                     {
                         deg = prevOption.getAngle() + 60f;
                     }
-                    var op = new Option(Vector2.Zero, gameDevice, mediator, gameObjectManager,  deg);
+                    var op = new Option(Vector2.Zero, gameDevice, mediator, gameObjectManager,  deg,hp);
                     prevOption = op;
                     GamePlay.gameObject.Add(op);
 
@@ -86,10 +90,12 @@ namespace OneButtonGame.Acter
             if(gameObject is PowerUpItem)
             {
                 powerUpCount += 1;
+                sound.PlaySE("bulletup");
             }
 
             if(gameObject is ScoreItem)
             {
+                sound.PlaySE("scoreup");
                 GamePlay.Score += 100;
             }
         }
@@ -115,7 +121,7 @@ namespace OneButtonGame.Acter
                 GamePlay.gameObject.Add(new PlayerBullet(new Vector2(playerPosition.X + 24, playerPosition.Y - 30),
                 gameDevice, mediator, gameObjectManager));
                 shotTime = 0;
-
+                sound.PlaySE("shot");
                 if (powerUpCount>=1)
                 {
                     GamePlay.gameObject.Add(new PlayerBullet(new Vector2(position.X + 63, position.Y + 32), gameDevice, mediator, gameObjectManager));
@@ -128,6 +134,7 @@ namespace OneButtonGame.Acter
 
             if (hp <= 0)
             {
+                sound.PlaySE("playerdie");
                 DeadFlag = true;
                 isDeadFlag = true;
             }

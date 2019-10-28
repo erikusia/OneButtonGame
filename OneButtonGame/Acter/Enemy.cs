@@ -20,13 +20,15 @@ namespace OneButtonGame.Acter
         int a;
         int shotTime;
         Range range;
-
+        Sound sound;
 
         public Enemy(Vector2 position, GameDevice gameDevice, IGameObjectMediator mediator)
             :base("Enemy",position,64,64,gameDevice)
         {
             this.position = position;
             this.mediator = mediator;
+            var game = GameDevice.Instance();
+            sound = game.GetSound();
         }
         public Enemy(Enemy other)
             :this(other.position,other.gameDevice,other.mediator)
@@ -44,6 +46,7 @@ namespace OneButtonGame.Acter
             if(gameObject is PlayerBullet)
             {
                 playerBulletHit(gameObject);
+                sound.PlaySE("enemydie");
                 isDeadFlag = true;
             }
             
