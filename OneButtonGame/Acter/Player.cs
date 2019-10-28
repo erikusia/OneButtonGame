@@ -44,6 +44,7 @@ namespace OneButtonGame.Acter
             DeadFlag = false;
             var game = GameDevice.Instance();
             sound = game.GetSound();
+            optionNumber = 0;
         }
 
         public Player(Player other)
@@ -72,7 +73,7 @@ namespace OneButtonGame.Acter
             {
                 optionNumber = optionNumber + 1;
 
-                if (optionNumber <= 6)
+                if (optionNumber < 6)
                 {
                     sound.PlaySE("aura");
                     float deg = 0f;
@@ -116,14 +117,18 @@ namespace OneButtonGame.Acter
             }
             if (Keyboard.GetState().IsKeyDown(Keys.A))
             {
-                float deg = 0f;
-                if (prevOption != null)
+                if (optionNumber < 6)
                 {
-                    deg = prevOption.getAngle() + 60f;
+                    optionNumber += 1;
+                    float deg = 0f;
+                    if (prevOption != null)
+                    {
+                        deg = prevOption.getAngle() + 60f;
+                    }
+                    var op = new Option(Vector2.Zero, gameDevice, mediator, gameObjectManager, deg, hp);
+                    prevOption = op;
+                    GamePlay.gameObject.Add(op);
                 }
-                var op = new Option(Vector2.Zero, gameDevice, mediator, gameObjectManager, deg, hp);
-                prevOption = op;
-                GamePlay.gameObject.Add(op);
             }
 
             shotTime += 1;
