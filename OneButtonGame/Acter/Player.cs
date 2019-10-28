@@ -114,6 +114,17 @@ namespace OneButtonGame.Acter
                 position = CalcPosition(center, angle, rad);
 
             }
+            if (Keyboard.GetState().IsKeyDown(Keys.A))
+            {
+                float deg = 0f;
+                if (prevOption != null)
+                {
+                    deg = prevOption.getAngle() + 60f;
+                }
+                var op = new Option(Vector2.Zero, gameDevice, mediator, gameObjectManager, deg, hp);
+                prevOption = op;
+                GamePlay.gameObject.Add(op);
+            }
 
             shotTime += 1;
             if (shotTime >= 10)

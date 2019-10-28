@@ -36,7 +36,7 @@ namespace OneButtonGame.Acter
             this.hp = hp;
             this.angle = angle;
             rotate = 2.0f;
-            rad = 96.0f;
+            rad = 64;
             shotTime = 10;
             //angle = 0;
             //angle2 = angle + 60;
@@ -87,7 +87,7 @@ namespace OneButtonGame.Acter
             //    position = optionPositions[i];
 
             //}
-            position = CalcPosition(Player.playerPosition, angle, rad);
+            position = CalcPosition(Player.playerPosition-new Vector2(-16,-16), angle, rad);
             shotTime += 1;
             if (shotTime >= 10)
             {
