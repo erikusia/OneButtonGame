@@ -52,6 +52,7 @@ namespace OneButtonGame.Scene
                 {"score",path },
                 {"highscore",path },
                 {"option",path },
+                {"boss",path },
                 //{"arrow-12",path },
                 //{"bow",path },
                 //必要に応じて自分で追加

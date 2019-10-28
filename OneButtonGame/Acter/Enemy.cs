@@ -80,7 +80,7 @@ namespace OneButtonGame.Acter
             //移動
             switch (a)
             {
-                case 0:position.Y += 2;
+                case 0:position.Y += (float)2.5;
                     if (position.Y>=150)
                     {
                         a += 1;

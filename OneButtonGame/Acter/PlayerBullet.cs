@@ -43,6 +43,11 @@ namespace OneButtonGame.Acter
             {
                 isDeadFlag = true;
             }
+            if(gameObject is Enemy2)
+            {
+                isDeadFlag = true;
+            }
+            
         }
 
         public override void Update(GameTime gameTime)

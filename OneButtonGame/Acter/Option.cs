@@ -64,6 +64,7 @@ namespace OneButtonGame.Acter
             {
                 hp -= 1;
             }
+            
             if(hp<0)
             {
                 isDeadFlag = true;
