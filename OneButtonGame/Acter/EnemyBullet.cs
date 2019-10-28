@@ -52,6 +52,11 @@ namespace OneButtonGame.Acter
             {
                 isDeadFlag = true;
             }
+
+            if(gameObject is PlayerBullet)
+            {
+                isDeadFlag = true;
+            }
         }
 
         public override void Update(GameTime gameTime)

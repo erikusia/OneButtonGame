@@ -42,9 +42,9 @@ namespace OneButtonGame.Scene
         public void Draw(Renderer renderer)
         {
             renderer.Begin();         
-            renderer.DrawTexture("background", Vector2.Zero);
-            renderer.DrawTexture("backwind", new Vector2(-15, 904 - 68));
+            renderer.DrawTexture("background", Vector2.Zero);          
             gameObject.Draw(renderer);
+            renderer.DrawTexture("backwind", new Vector2(-15, 904 - 68));
             if (Player.DeadFlag == false)
             {
                 //renderer.DrawNumber("number", new Vector2(150, 0), Score);
@@ -117,9 +117,10 @@ namespace OneButtonGame.Scene
             {
                 int x = rnd.Next(1, 740);
                 int y = rnd.Next(-50, 0);
-                enemy2 = new Enemy2(new Vector2(x, y),
-                    GameDevice.Instance(), gameObject);
-                gameObject.Add(enemy2);
+                gameObject.Add(new PowerUpItem(new Vector2(x, y), GameDevice.Instance(), gameObject));
+                //enemy2 = new Enemy2(new Vector2(x, y),
+                //    GameDevice.Instance(), gameObject);
+                //gameObject.Add(enemy2);
             }
             if (scoreTime >= 20)
             {
@@ -198,7 +199,7 @@ namespace OneButtonGame.Scene
                 }
             }
 
-            else if (seconds <= 40)
+            else if (seconds <= 55)
             {
                 //Console.WriteLine("40です");
                 if (spawnTime >= 60)
@@ -227,10 +228,10 @@ namespace OneButtonGame.Scene
                 }
             }
 
-            else if (seconds <= 60)
+            else if (seconds <= 80)
             {
                 //Console.WriteLine("40です");
-                if (spawnTime >= 30)
+                if (spawnTime >= 40)
                 {
                     int x = rnd.Next(1, 740);
                     int y = rnd.Next(-50, 0);

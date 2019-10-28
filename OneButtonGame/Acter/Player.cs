@@ -124,11 +124,11 @@ namespace OneButtonGame.Acter
                 sound.PlaySE("shot");
                 if (powerUpCount>=1)
                 {
-                    GamePlay.gameObject.Add(new PlayerBullet(new Vector2(position.X + 63, position.Y + 32), gameDevice, mediator, gameObjectManager));
+                    GamePlay.gameObject.Add(new PlayerBullet2(new Vector2(position.X + 50, position.Y + 32), gameDevice, mediator, gameObjectManager));
                 }
                 if (powerUpCount >= 2)
                 {
-                    GamePlay.gameObject.Add(new PlayerBullet(new Vector2(position.X-1, position.Y + 32), gameDevice, mediator, gameObjectManager));
+                    GamePlay.gameObject.Add(new PlayerBullet3(new Vector2(position.X-1, position.Y + 32), gameDevice, mediator, gameObjectManager));
                 }
             }
 

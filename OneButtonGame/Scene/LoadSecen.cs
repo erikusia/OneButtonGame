@@ -55,6 +55,7 @@ namespace OneButtonGame.Scene
                 {"boss",path },
                 {"background",path },
                 {"backwind",path },
+                {"EnemyBullet1",path },
                 //{"arrow-12",path },
                 //{"bow",path },
                 //必要に応じて自分で追加

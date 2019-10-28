@@ -10,46 +10,51 @@ using System.Threading.Tasks;
 
 namespace OneButtonGame.Acter
 {
-    class EnemyBullet2:GameObject
+    class PlayerBullet2:GameObject
     {
         private GameObjectManager gameObjectManager;
         private IGameObjectMediator mediator;
         Vector2 speed;
         Range range;
         int shotTime;
-        Vector2 a;
-        public static int b;
-
-        public EnemyBullet2(Vector2 position, GameDevice gameDevice, IGameObjectMediator mediator)
-            : base("EnemyBullet1", position, 16, 16, gameDevice)
+        public PlayerBullet2(Vector2 position, GameDevice gameDevice, IGameObjectMediator mediator, GameObjectManager gameObjectManager)
+            : base("Bullet1", position, 16, 16, gameDevice)
         {
             this.position = position;
             this.mediator = mediator;
-            speed = new Vector2(0, -30);
+            this.gameObjectManager = gameObjectManager;
+            speed = new Vector2(5, -30);
             shotTime = 60;
-            a = position;
         }
-        public EnemyBullet2(EnemyBullet2 other)
-            : this(other.position, other.gameDevice, other.mediator)
+        public PlayerBullet2(PlayerBullet2 other)
+            : this(other.position, other.gameDevice, other.mediator, other.gameObjectManager)
         {
 
         }
         public override object Clone()
         {
-            return new EnemyBullet2(this);
+            return new PlayerBullet2(this);
         }
 
         public override void Hit(GameObject gameObject)
         {
-            if(gameObject is Player)
+            if (gameObject is Enemy)
             {
                 isDeadFlag = true;
             }
-            if(gameObject is PlayerBullet)
+            if (gameObject is Enemy2)
             {
                 isDeadFlag = true;
             }
-            if (gameObject is Option)
+            if(gameObject is EnemyBullet)
+            {
+                isDeadFlag = true;
+            }
+            if (gameObject is EnemyBullet2)
+            {
+                isDeadFlag = true;
+            }
+            if (gameObject is EnemyBullet3)
             {
                 isDeadFlag = true;
             }
@@ -57,10 +62,8 @@ namespace OneButtonGame.Acter
 
         public override void Update(GameTime gameTime)
         {
+            position += speed;
 
-            position +=new Vector2(1,5);
-
-            //画面外に出たら
             range = new Range(0, Screen.Width);
             if (range.IsOutOfRange((int)position.X))
             {

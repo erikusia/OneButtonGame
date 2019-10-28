@@ -52,6 +52,8 @@
     <Compile Include="Acter\OptionMgr.cs" />
     <Compile Include="Acter\Player.cs" />
     <Compile Include="Acter\PlayerBullet.cs" />
+    <Compile Include="Acter\PlayerBullet2.cs" />
+    <Compile Include="Acter\PlayerBullet3.cs" />
     <Compile Include="Acter\PowerUpItem.cs" />
     <Compile Include="Acter\ScoreItem.cs" />
     <Compile Include="Def\Screen.cs" />
