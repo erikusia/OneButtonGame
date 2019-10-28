@@ -17,6 +17,7 @@ namespace OneButtonGame.Acter
         private IGameObjectMediator mediator;
         private Random rnd = new Random();
         int a;
+        int deadCount;
         int shotTime;
         int Time;
         Range range;
@@ -56,6 +57,7 @@ namespace OneButtonGame.Acter
         private void playerBulletHit(GameObject gameObject)
         {
             GamePlay.Score += 100;
+            GamePlay.enemy2Count -= 1;
             GamePlay.gameObject.Add(new ScoreItem(position, gameDevice, mediator));
 
             switch (rnd.Next(0, 1))
@@ -104,12 +106,20 @@ namespace OneButtonGame.Acter
             range = new Range(0, Screen.Width);
             if (range.IsOutOfRange((int)position.X))
             {
-                isDeadFlag = true;
+                deadCount += 1;
+                if (deadCount >= 30)
+                {
+                    isDeadFlag = true;
+                    GamePlay.enemy2Count -= 1;
+                }
+                
             }
-            range = new Range(-100, Screen.Height);
+            range = new Range(-100, Screen.Height-5);
             if (range.IsOutOfRange((int)position.Y))
             {
                 isDeadFlag = true;
+                GamePlay.enemy2Count -= 1;
+
             }
         }
     }

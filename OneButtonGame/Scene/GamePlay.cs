@@ -30,6 +30,8 @@ namespace OneButtonGame.Scene
         int scoreTime;
         float seconds;
         bool spaceCheck;
+        public static int enemy2Count;
+        int enemy2Count2;
 
         public GamePlay()         
         {
@@ -38,6 +40,7 @@ namespace OneButtonGame.Scene
             tp = new GameTime();
             Score = 0;
             spaceCheck = false;
+            enemy2Count = 0;
         }
         public void Draw(Renderer renderer)
         {
@@ -70,6 +73,8 @@ namespace OneButtonGame.Scene
                 {
                     Score = 0;
                     seconds = 0;
+                    enemy2Count = 0;
+                    enemy2Count2 = 0;
                     isEnd = true;
                 }
 
@@ -108,7 +113,7 @@ namespace OneButtonGame.Scene
         public void Update(GameTime gameTime)
         {
             seconds += (float)gameTime.ElapsedGameTime.TotalSeconds;
-            //Console.WriteLine(seconds);
+            Console.WriteLine("enemy2:"+enemy2Count);
             spawnTime += 1;
             scoreTime += 1;
             
@@ -133,7 +138,7 @@ namespace OneButtonGame.Scene
 
             if (seconds <= 10)
             {
-                //Console.WriteLine("10です");
+                Console.WriteLine("10です");
                 if (spawnTime >= 120)
                 {
                     int x = rnd.Next(1, 740);
@@ -142,33 +147,40 @@ namespace OneButtonGame.Scene
                         GameDevice.Instance(), gameObject);
                     gameObject.Add(enemy);
 
-                    switch (rnd.Next(0, 6))
+                    if (enemy2Count < 1)
                     {
-                        case 0:
-                            gameObject.Add(null);
-                            break;
-                        case 1:
-                            gameObject.Add(new Enemy2(new Vector2(rnd.Next(1, 740), rnd.Next(-50, 0)), GameDevice.Instance(),gameObject));
-                            break;
-                        case 2:
-                            gameObject.Add(null);
-                            break;
-                        case 3:
-                            gameObject.Add(null);
-                            break;
-                        case 4:
-                            gameObject.Add(null);
-                            break;
-                        case 5:
-                            gameObject.Add(null);
-                            break;
+
+                        switch (rnd.Next(0, 6))
+                        {
+                            case 0:
+                                gameObject.Add(null);
+                                break;
+                            case 1:
+                                gameObject.Add(new Enemy2(new Vector2(rnd.Next(1, 740), rnd.Next(-50, 0)), GameDevice.Instance(), gameObject));
+                                enemy2Count++;
+                                enemy2Count2++;
+                                break;
+                            case 2:
+                                gameObject.Add(null);
+                                break;
+                            case 3:
+                                gameObject.Add(null);
+                                break;
+                            case 4:
+                                gameObject.Add(null);
+                                break;
+                            case 5:
+                                gameObject.Add(null);
+                                break;
+                        }
                     }
+   
                     spawnTime = 0;
                 }
             }
             else if (seconds <= 20)
             {
-                //Console.WriteLine("20です");
+                Console.WriteLine("20です");
                 if (spawnTime >= 90)
                 {
                     int x = rnd.Next(1, 740);
@@ -176,32 +188,43 @@ namespace OneButtonGame.Scene
                     enemy = new Enemy(new Vector2(x, y),
                         GameDevice.Instance(), gameObject);
                     gameObject.Add(enemy);
-
-                    switch (rnd.Next(0, 5))
+                    if (enemy2Count2<1)
                     {
-                        case 0:
-                            gameObject.Add(null);
-                            break;
-                        case 1:
-                            gameObject.Add(new Enemy2(new Vector2(rnd.Next(1, 740), rnd.Next(-50, 0)), GameDevice.Instance(), gameObject));
-                            break;
-                        case 2:
-                            gameObject.Add(null);
-                            break;
-                        case 3:
-                            gameObject.Add(null);
-                            break;
-                        case 4:
-                            gameObject.Add(null);
-                            break;
+                        gameObject.Add(new Enemy2(new Vector2(rnd.Next(1, 740), rnd.Next(-50, 0)), GameDevice.Instance(), gameObject));
+                        enemy2Count++;
+                        enemy2Count2++;
                     }
+
+                    if (enemy2Count < 2)
+                    {
+                        switch (rnd.Next(0, 5))
+                        {
+                            case 0:
+                                gameObject.Add(null);
+                                break;
+                            case 1:
+                                gameObject.Add(new Enemy2(new Vector2(rnd.Next(1, 740), rnd.Next(-50, 0)), GameDevice.Instance(), gameObject));
+                                enemy2Count++;
+                                break;
+                            case 2:
+                                gameObject.Add(null);
+                                break;
+                            case 3:
+                                gameObject.Add(null);
+                                break;
+                            case 4:
+                                gameObject.Add(null);
+                                break;
+                        }
+                    }
+
                     spawnTime = 0;
                 }
             }
 
             else if (seconds <= 55)
             {
-                //Console.WriteLine("40です");
+                Console.WriteLine("55です");
                 if (spawnTime >= 60)
                 {
                     int x = rnd.Next(1, 740);
@@ -209,28 +232,34 @@ namespace OneButtonGame.Scene
                     enemy = new Enemy(new Vector2(x, y),
                         GameDevice.Instance(), gameObject);
                     gameObject.Add(enemy);
-                    switch (rnd.Next(0, 4))
+                    if (enemy2Count < 3)
                     {
-                        case 0:
-                            gameObject.Add(null);
-                            break;
-                        case 1:
-                            gameObject.Add(new Enemy2(new Vector2(rnd.Next(1, 740), rnd.Next(-50, 0)), GameDevice.Instance(), gameObject));
-                            break;
-                        case 2:
-                            gameObject.Add(null);
-                            break;
-                        case 3:
-                            gameObject.Add(null);
-                            break;
+                        switch (rnd.Next(0, 4))
+                        {
+                            case 0:
+                                gameObject.Add(null);
+                                break;
+                            case 1:
+                                gameObject.Add(new Enemy2(new Vector2(rnd.Next(1, 740), rnd.Next(-50, 0)), GameDevice.Instance(), gameObject));
+                                enemy2Count++;
+                                break;
+                            case 2:
+                                gameObject.Add(null);
+                                break;
+                            case 3:
+                                gameObject.Add(null);
+                                break;
+                        }
+                        
                     }
+
                     spawnTime = 0;
                 }
             }
 
             else if (seconds <= 80)
             {
-                //Console.WriteLine("40です");
+                Console.WriteLine("80です");
                 if (spawnTime >= 40)
                 {
                     int x = rnd.Next(1, 740);
@@ -238,20 +267,25 @@ namespace OneButtonGame.Scene
                     enemy = new Enemy(new Vector2(x, y),
                         GameDevice.Instance(), gameObject);
                     gameObject.Add(enemy);
-                    switch (rnd.Next(0, 4))
+                    if (enemy2Count < 4)
                     {
-                        case 0:
-                            gameObject.Add(null);
-                            break;
-                        case 1:
-                            gameObject.Add(new Enemy2(new Vector2(rnd.Next(1, 740), rnd.Next(-50, 0)), GameDevice.Instance(), gameObject));
-                            break;
-                        case 2:
-                            gameObject.Add(null);
-                            break;
-                        case 3:
-                            gameObject.Add(null);
-                            break;
+                        switch (rnd.Next(0, 4))
+                        {
+                            case 0:
+                                gameObject.Add(null);
+                                break;
+                            case 1:
+                                gameObject.Add(new Enemy2(new Vector2(rnd.Next(1, 740), rnd.Next(-50, 0)), GameDevice.Instance(), gameObject));
+                                enemy2Count++;
+                                break;
+                            case 2:
+                                gameObject.Add(null);
+                                break;
+                            case 3:
+                                gameObject.Add(null);
+                                break;
+                        }
+                       
                     }
                     spawnTime = 0;
                 }
