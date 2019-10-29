@@ -32,6 +32,7 @@ namespace OneButtonGame.Scene
         bool spaceCheck;
         public static int enemy2Count;
         int enemy2Count2;
+        Sound sound;
 
         public GamePlay()         
         {
@@ -41,6 +42,8 @@ namespace OneButtonGame.Scene
             Score = 0;
             spaceCheck = false;
             enemy2Count = 0;
+            var game = GameDevice.Instance();
+            sound = game.GetSound();
         }
         public void Draw(Renderer renderer)
         {
@@ -91,7 +94,6 @@ namespace OneButtonGame.Scene
             optionNumber = 0;
             gameObject.Add(player);       
             gameObject.Add(option);
-         
             isEnd = false;
         }
 
@@ -112,6 +114,8 @@ namespace OneButtonGame.Scene
 
         public void Update(GameTime gameTime)
         {
+            sound.PlayBGM("bgm_cyber");
+
             seconds += (float)gameTime.ElapsedGameTime.TotalSeconds;
             Console.WriteLine("enemy2:"+enemy2Count);
             spawnTime += 1;

@@ -79,6 +79,7 @@ namespace OneButtonGame.Scene
             string[,] data = new string[,]
             {
                 //{ "titlebgm", path},
+                { "bgm_cyber", path},
                 //必要に応じて自分で追加
             };
 
