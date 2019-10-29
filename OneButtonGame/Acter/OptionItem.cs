@@ -17,7 +17,7 @@ namespace OneButtonGame.Acter
         Vector2 speed;
         Range range;
         public OptionItem(Vector2 position, GameDevice gameDevice, IGameObjectMediator mediator)
-            : base("block", position, 64, 64, gameDevice)
+            : base("optionitem", position, 64, 64, gameDevice)
         {
             this.position = position;
             this.mediator = mediator;

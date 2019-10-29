@@ -21,7 +21,7 @@ namespace OneButtonGame.Acter
         public static int b;
 
         public EnemyBullet2(Vector2 position, GameDevice gameDevice, IGameObjectMediator mediator)
-            : base("EnemyBullet1", position, 16, 16, gameDevice)
+            : base("Bullet2", position, 16, 16, gameDevice)
         {
             this.position = position;
             this.mediator = mediator;
