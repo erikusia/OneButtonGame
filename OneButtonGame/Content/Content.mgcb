@@ -295,3 +295,9 @@
 /processorParam:TextureFormat=Color
 /build:Texture/Scoreup.png
 
+#begin Sound/bgm_cyber.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Sound/bgm_cyber.mp3
+
